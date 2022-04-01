@@ -23,7 +23,7 @@ const Form = (props) => {
             <p>{errors.tos}</p>
             <form onSubmit={onSubmit}>
             <label>Name
-                <input  type="text" name="username" value={username} onChange={onChange}/>
+                <input class="username"  type="text" name="username" value={username} onChange={onChange}/>
             </label>
             <label>Email
                 <input  type="email" name="email" value={email} onChange={onChange}/>
