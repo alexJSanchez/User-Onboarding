@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as yup from 'yup';
 import './App.css';
+import axios from 'axios';
 import Form from './component/Form';
 import schema from './validation/FormSchema';
 
@@ -37,7 +38,7 @@ function App() {
 
   return (
     <div className="App">
-      <Form values={formValues} change={handleChange} />
+      <Form values={formValues} change={handleChange} errors={formErrors}/>
     </div>
   );
 }
