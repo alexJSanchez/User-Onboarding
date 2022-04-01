@@ -20,8 +20,15 @@ const initialFormErrors = {
 function App() {
   const [ formValues ,  setFormValues] = useState(initialFormValues);
   const [ formErrors, setFormErrors] = useState(initialFormErrors);
+  const [ users, setUsers] = useState([]);
+  
+  
   const handleSubmit = (e) => {
-    //wip
+   axios.post('https://reqres.in/api/users', formValues)
+   .then(resp => {
+     setUsers(resp.data, ...users)
+     .catch(err => 'error')
+   })
   }
 
   const validate = (name, value) => {
@@ -38,7 +45,13 @@ function App() {
 
   return (
     <div className="App">
-      <Form values={formValues} change={handleChange} errors={formErrors}/>
+      <Form values={formValues} change={handleChange} errors={formErrors} submit={handleSubmit}/>
+        {users.map(user => (
+          <div key="user.id">
+            <p>{user.createdAt}</p>
+            <p>{user.email}</p>
+          </div>
+        ))}
     </div>
   );
 }
